@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, url_for, request
 import pybedquilt
 
 
@@ -13,15 +13,32 @@ app = Flask(__name__)
 #     CREATE EXTENSION bedquilt;
 # See the getting-started guide here: http://bedquiltdb.readthedocs.org
 bq = pybedquilt.BedquiltClient("dbname=bedquilt_example")
+items_collection = bq['items']
 
 
-@app.route("/")
+@app.route('/')
 def home():
 
-    items_coll = bq['items']
-    items = items_coll.find()
+    items = items_collection.find()
 
     return render_template('home.html', items=items)
+
+
+@app.route('/item', methods=['POST'])
+def new_item():
+    description = request.form['description']
+    doc = {
+        'description': description,
+        'done': False
+    }
+    items_collection.save(doc)
+    return redirect(url_for('home'))
+
+
+@app.route('/item/<item_id>/delete', methods=['POST'])
+def delete_item(item_id):
+    items_collection.remove_one_by_id(item_id)
+    return redirect(url_for('home'))
 
 
 if __name__ == "__main__":

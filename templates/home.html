@@ -6,7 +6,7 @@
     {% if items %}
     <ul>
       {% for item in items %}
-      {{ item.description }}
+      <li>{{ item.description }}</li>
       {% endfor %}
     </ul>
     {% else %}
@@ -14,7 +14,20 @@
       You have no items in your todo list
     </p>
     {% endif %}
+  </div>
 
+  <div class="row">
+    <div class="col-md-4">
+      <h3>New Todo Item</h3>
+      <form action="{{ url_for('new_item') }}"
+            method="post">
+        <div class="form-group">
+          <label for="description">Description</label>
+          <input type="text" class="form-control" id="description" name="description">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
   </div>
 </p>
 {% endblock %}
