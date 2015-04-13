@@ -2,6 +2,19 @@
 {% block content %}
 <p>
   <h1>My Todo List</h1>
+  <div>
+    {% if items %}
+    <ul>
+      {% for item in items %}
+      {{ item.description }}
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p>
+      You have no items in your todo list
+    </p>
+    {% endif %}
 
+  </div>
 </p>
 {% endblock %}

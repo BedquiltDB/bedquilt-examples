@@ -17,7 +17,11 @@ bq = pybedquilt.BedquiltClient("dbname=bedquilt_example")
 
 @app.route("/")
 def home():
-    return render_template('home.html')
+
+    items_coll = bq['items']
+    items = items_coll.find()
+
+    return render_template('home.html', items=items)
 
 
 if __name__ == "__main__":
