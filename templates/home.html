@@ -6,7 +6,7 @@
     {% if items %}
     <ul>
       {% for item in items %}
-      <li>{{ item.description }}</li>
+      <li>{{ item.description }} <a class="btn btn-xs btn-danger" href="/item/{{ item._id }}/delete">delete</a></li>
       {% endfor %}
     </ul>
     {% else %}

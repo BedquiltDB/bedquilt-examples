@@ -18,9 +18,7 @@ items_collection = bq['items']
 
 @app.route('/')
 def home():
-
     items = items_collection.find()
-
     return render_template('home.html', items=items)
 
 
@@ -35,7 +33,7 @@ def new_item():
     return redirect(url_for('home'))
 
 
-@app.route('/item/<item_id>/delete', methods=['POST'])
+@app.route('/item/<item_id>/delete', methods=['GET'])
 def delete_item(item_id):
     items_collection.remove_one_by_id(item_id)
     return redirect(url_for('home'))
