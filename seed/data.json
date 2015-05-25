@@ -1,0 +1,21 @@
+{
+    "tickets": [
+        {
+            "title": "Cannot install BlooApp on CentOS",
+            "description": "As the title says, I can't install BlooApp on a CentOS box.",
+            "tags": ["bug", "installation"],
+            "priority": "medium",
+            "severity": "high",
+            "assignee": null
+        },
+        {
+            "title": "Poor retina display support",
+            "description": "We need to provide better retina assets.",
+            "tags": ["enhancement", "UI"],
+            "priority": "medium",
+            "severity": "low",
+            "assignee": "sarah@example.com"
+        }
+
+    ]
+}
