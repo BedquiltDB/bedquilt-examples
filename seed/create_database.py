@@ -57,11 +57,13 @@ def main():
     #   - insert into bedquilt_example
     print ">> Adding data to database"
     data = json.load(open('seed/data.json'))
-    tickets = data['tickets']
-    for ticket in tickets:
-        psql("""select bq_insert('tickets', '{}'::json)""".
-             format(sql_escape(json.dumps(ticket))),
-             db=BEDQUILT_EXAMPLE)
+    for k, v in data.iteritems():
+        for item in v:
+            psql("""select bq_insert('{}', '{}'::json)""".
+                 format(
+                     k,
+                     sql_escape(json.dumps(item))),
+                 db=BEDQUILT_EXAMPLE)
 
     print ">> Done"
 
