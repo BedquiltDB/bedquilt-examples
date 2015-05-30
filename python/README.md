@@ -27,3 +27,5 @@ See the getting-started guide here: http://bedquiltdb.readthedocs.org
 ```
 $ python server.py
 ```
+
+Then visit localhost:5000 in your web browser.
