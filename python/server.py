@@ -13,29 +13,31 @@ app = Flask(__name__)
 #     CREATE EXTENSION bedquilt;
 # See the getting-started guide here: http://bedquiltdb.readthedocs.org
 bq = pybedquilt.BedquiltClient("dbname=bedquilt_example")
-items_collection = bq['items']
+notes_collection = bq['notes']
 
 
 @app.route('/')
 def home():
-    items = items_collection.find()
-    return render_template('home.html', items=items)
+    notes = notes_collection.find()
+    return render_template('home.html', notes=notes)
 
 
-@app.route('/item', methods=['POST'])
-def new_item():
+@app.route('/note', methods=['POST'])
+def new_note():
+    title = request.form['title']
     description = request.form['description']
     doc = {
+        'title': title,
         'description': description,
-        'done': False
+        'tags': []
     }
-    items_collection.save(doc)
+    notes_collection.save(doc)
     return redirect(url_for('home'))
 
 
-@app.route('/item/<item_id>/delete', methods=['GET'])
-def delete_item(item_id):
-    items_collection.remove_one_by_id(item_id)
+@app.route('/note/<note_id>/delete', methods=['GET'])
+def delete_note(note_id):
+    notes_collection.remove_one_by_id(note_id)
     return redirect(url_for('home'))
 
 

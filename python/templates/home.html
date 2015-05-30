@@ -3,25 +3,37 @@
 <p>
   <h1>My Todo List</h1>
   <div>
-    {% if items %}
+    {% if notes %}
     <ul>
-      {% for item in items %}
-      <li>{{ item.description }} <a class="btn btn-xs btn-danger" href="/item/{{ item._id }}/delete">delete</a></li>
+      {% for note in notes %}
+      <li>
+        <strong>{{ note.title }}</strong><br />
+        {% if note.description %}
+        {{ note.description }}
+        {% else %}
+        No description
+        {% endif %}<br />
+        <a class="btn btn-xs btn-danger" href="/note/{{ note._id }}/delete">delete</a>
+      </li>
+      <br />
       {% endfor %}
     </ul>
     {% else %}
     <p>
-      You have no items in your todo list
+      You have no notes in your todo list
     </p>
     {% endif %}
   </div>
 
   <div class="row">
     <div class="col-md-4">
-      <h3>New Todo Item</h3>
-      <form action="{{ url_for('new_item') }}"
+      <h3>New Note</h3>
+      <form action="{{ url_for('new_note') }}"
             method="post">
         <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" class="form-control" id="title" name="title">
+
           <label for="description">Description</label>
           <input type="text" class="form-control" id="description" name="description">
         </div>
