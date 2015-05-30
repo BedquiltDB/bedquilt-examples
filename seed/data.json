@@ -1,21 +1,19 @@
 {
-    "tickets": [
+    "notes": [
         {
-            "title": "Cannot install BlooApp on CentOS",
-            "description": "As the title says, I can't install BlooApp on a CentOS box.",
-            "tags": ["bug", "installation"],
-            "priority": "medium",
-            "severity": "high",
-            "assignee": null
+            "title": "Pick up Dry Cleaning",
+            "description": "I've got a jacket waiting at the dry cleaners for the past week",
+            "tags": ["domestic", "laundry"]
         },
         {
-            "title": "Poor retina display support",
-            "description": "We need to provide better retina assets.",
-            "tags": ["enhancement", "UI"],
-            "priority": "medium",
-            "severity": "low",
-            "assignee": "sarah@example.com"
+            "title": "Make Dentist Appointment",
+            "description": "Should really make an appointment at the dentist: 01551724202",
+            "tags": ["health"]
+        },
+        {
+            "title": "Clean the kitchen",
+            "description": "",
+            "tags": ["domestic"]
         }
-
     ]
 }
