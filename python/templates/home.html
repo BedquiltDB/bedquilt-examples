@@ -1,30 +1,34 @@
 {% extends 'base.html' %}
 {% block content %}
-<p>
-  <h1>My Notes</h1>
-  <div>
-    {% if notes %}
-    <ul>
-      {% for note in notes %}
-      <li>
-        <strong>{{ note.title }}</strong><br />
-        {% if note.description %}
-        {{ note.description }}
-        {% else %}
-        No description
-        {% endif %}<br />
-        <a class="btn btn-xs btn-danger" href="/note/{{ note._id }}/delete">delete</a>
-      </li>
-      <br />
-      {% endfor %}
-    </ul>
-    {% else %}
-    <p>
-      You have no notes in your todo list
-    </p>
-    {% endif %}
+<div class="row">
+  <div class="col-md-6">
+    <h1>My Notes</h1>
+    <div id="note-list">
+      {% if notes %}
+        {% for note in notes %}
+        <div class="note well well-md" id="note_{{ note._id }}">
+          <h3>{{ note.title }}</h3>
+          <p class="description">
+            {% if note.description %}
+              {{ note.description }}
+            {% else %}
+            <em>No description</em>
+            {% endif %}
+          </p>
+          <div class="actions">
+            <a class="btn btn-xs btn-danger"
+               href="/note/{{ note._id }}/delete">
+              Delete
+            </a>
+          </div>
+        </div>
+        {% endfor %}
+      {% else %}
+        You have no notes in your todo list
+      {% endif %}
+    </div>
   </div>
-
+</div>
   <div class="row">
     <div class="col-md-4">
       <h3>New Note</h3>
@@ -41,5 +45,4 @@
       </form>
     </div>
   </div>
-</p>
 {% endblock %}
