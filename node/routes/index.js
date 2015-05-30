@@ -8,11 +8,11 @@ var db = 'postgres://localhost/bedquilt_example';
 
 router.get('/', function(req, res) {
   BedquiltClient.connect(db, function(err, client) {
-    var items = client.collection('items');
-    items.find({}, function(err, result) {
+    var notes = client.collection('notes');
+    notes.find({}, function(err, result) {
       res.render('index', {
         title: 'BedquiltDB Example',
-        items: result
+        notes: result
       });
     });
   });

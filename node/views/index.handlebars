@@ -6,16 +6,20 @@
 </div>
 <div class="row">
   <div class="col-md-12">
-    <h2>Items</h2>
+    <h2>Notes</h2>
     <div id="item-list">
-      {{#if items}}
+      {{#if notes}}
 
-      {{#each items}}
-      <div>{{description}}</div>
+      {{#each notes}}
+      <div class="note">
+        <strong>{{title}}</strong><br />
+        {{description}}
+      </div>
+      <br />
       {{/each}}
 
       {{else}}
-      No items.
+      No Notes.
       {{/if}}
     </div>
   </div>
