@@ -1,3 +1,15 @@
 body {
   padding: 50px;
 }
+
+#note-list {
+    padding: 12px;
+}
+
+.note {
+    margin-bottom: 24px;
+}
+
+.note h3 {
+    margin-top: 2px;
+}
