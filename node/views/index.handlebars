@@ -20,6 +20,12 @@
           <em>No description</em>
           {{/if}}
         </p>
+        <div class="actions">
+          <form action="/note/{{_id}}/delete"
+                method="post">
+            <button class="btn btn-xs btn-danger">Delete</button>
+          </form>
+        </div>
       </div>
       <br />
       {{/each}}

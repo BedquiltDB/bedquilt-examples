@@ -5,7 +5,6 @@ var BedquiltClient = require('bedquilt').BedquiltClient;
 var db = 'postgres://localhost/bedquilt_example';
 
 /* GET home page. */
-
 router.get('/', function(req, res) {
   BedquiltClient.connect(db, function(err, client) {
     var notes = client.collection('notes');
@@ -18,6 +17,7 @@ router.get('/', function(req, res) {
   });
 });
 
+/* Create a new note */
 router.post('/note', function(req, res) {
   var data = req.body;
   BedquiltClient.connect(db, function(err, client) {
@@ -28,6 +28,17 @@ router.post('/note', function(req, res) {
       tags: []
     };
     notes.save(doc, function(err, result) {
+      res.redirect('/');
+    });
+  });
+});
+
+/* Delete a note */
+router.post('/note/:id/delete', function(req, res) {
+  var noteId = req.params.id;
+  BedquiltClient.connect(db, function(err, client) {
+    var notes = client.collection('notes');
+    notes.removeOneById(noteId, function(err, result) {
       res.redirect('/');
     });
   });
