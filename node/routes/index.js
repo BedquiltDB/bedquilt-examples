@@ -18,4 +18,19 @@ router.get('/', function(req, res) {
   });
 });
 
+router.post('/note', function(req, res) {
+  var data = req.body;
+  BedquiltClient.connect(db, function(err, client) {
+    var notes = client.collection('notes');
+    var doc = {
+      title: data.title,
+      description: data.description,
+      tags: []
+    };
+    notes.save(doc, function(err, result) {
+      res.redirect('/');
+    });
+  });
+});
+
 module.exports = router;
