@@ -24,8 +24,11 @@ See the getting-started guide here: http://bedquiltdb.readthedocs.org
 
 ## Running The Server
 
+First, run `pip install -r requirements.txt` to install the required python
+packages. Then run:
+
 ```
 $ python server.py
 ```
 
-Then visit localhost:5000 in your web browser.
+and visit localhost:5000 in your web browser.
