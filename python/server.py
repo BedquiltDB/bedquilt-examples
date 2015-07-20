@@ -18,7 +18,7 @@ notes_collection = bq['notes']
 
 @app.route('/')
 def home():
-    notes = notes_collection.find()
+    notes = list(notes_collection.find())
     return render_template('home.html', notes=notes)
 
 
